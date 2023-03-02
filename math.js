@@ -8,17 +8,16 @@ console.group("Cuadrado") // incia
         perimetroCuadrado,
         areaCuadrado,
     })
-console.groupEnd("Cuadrado") // termina 
-
-
-console.group("Triangulo") // inicia
     function calcularPerimetroCuadrado(lado) {
         return{
             parametro: lado * 4,
             area: lado * lado,
         }
     }
+console.groupEnd("Cuadrado") // termina 
 
+
+console.group("Triangulo") // inicia
     const ladoTriangulo1 = 6;
     const ladoTriangulo2 = 6;
     const ladoTrianguloBase = 4;
@@ -32,6 +31,25 @@ console.group("Triangulo") // inicia
         return{
             parametro: lado1 + lado2 + base,
             area: (base * altura) / 2
+        }
+    }
+
+    function calculoAlturaTrianhguloIsosceles(lados, base) {
+        if (lados == base) {
+            console.warn("Este no es un triangulo isosceles, tiene todos los lados iguales")
+        } else {
+            // h = raizcuadrada (lado**2 - (b**2) /4)
+            return Math.sqrt( (lados ** 2) - (base * 2) / 4);
+        }
+    }
+
+    function calculoAlturaTrianhguloEscaleno(lado1, lado2, lado3) {
+        const S = (lado1 + lado2 + lado3) / 2
+        if (lado1 == lado3 && lado2 == lado3 && lado1 == lado2) {
+            console.warn("Este no es un triangulo escaleno, tiene dos lados iguales")
+        }  else {
+            // h = raizcuadrada Semiperimetro(S - lado1) (S - lado2) (S-lado3)
+            return h = Math.sqrt( S * (S - lado1) * (S - lado2) * (S - lado3))
         }
     }
 
