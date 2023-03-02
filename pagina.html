@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cal</title>
+    <!-- <style>
+        .fondo-cool {
+            background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(80,128,184,1) 100%);
+            width: 375px;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+        }
+
+        .tittle{
+            font-weight: 200;
+            font-style: revert;
+            font-size: 30px;
+        }
+
+        p{
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: 200;
+            font-style: revert;
+            font-size: 18px;
+        }
+
+        input {
+            background: #ffffff8c;
+            border-radius: 10px;
+            padding: 5px 12px;
+            cursor: pointer;
+            outline: none;
+            border: none;
+        }
+
+        input:active {
+            border: none;
+        }
+
+        button {
+            margin: 11px 0;
+            padding: 7px 15px;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 15px;
+            background: #0041bd38;
+            cursor: pointer;
+        }
+
+        p:nth-child(3){
+            border-top: 5px;
+        }
+    </style> -->
+</head>
+<body>
+    <main class="fondo-cool">
+        <h1 class="tittle">Descuenta!!</h1>
+
+        <p id="price">El precio del producto</p>
+        <input type="number" class="input">
+
+        <p id="discount">El descuento que quieres</p>
+        <input type="number" class="input">
+
+        <button id="calcular">Calcular descuento</button>
+
+        <p id="result"></p>
+    </main>
+
+    <script>
+        const inputPrice = document.querySelector('#price');
+        const inputDiscount = document.querySelector('#discount');
+        const btn = document.querySelector('#calcular');
+        const pResult = document.querySelector('#result');
+
+        btn.addEventListener('click', calcularPrecioConDescuento);
+
+        function calcularPrecioConDescuento() {
+
+        const price = Number(inputPrice.value);
+        const discount = Number(inputDiscount.value);
+
+        console.log({ price, discount });
+
+        if (price == discount) {
+            pResult.innerText = 'por favor llena el formulario';
+            return;
+        } else if (discount > 100) {
+            pResult.innerText = 'error';
+            return;
+        }
+
+          const newPrice = (price * (100 - discount)) / 100;
+
+        pResult.innerText = 'El nuevo precio con descuento es $' + newPrice;
+        }
+    </script>
+</body>
+</html>
