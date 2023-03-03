@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cupons</title>
+</head>
+<body>
+    <main class="fondo-cool">
+        <h1 class="tittle">Descuenta!!</h1>
+
+        <p>El precio del producto</p>
+        <input type="number" id="price">
+
+        <p>Cupon de descuento</p>
+        <input type="text" id="discount">
+
+        <button id="calcular">Calcular descuento</button>
+
+        <p id="result"></p>
+    </main>
+
+    <script>
+        const inputPrice = document.querySelector('#price');
+        const inputCupon = document.querySelector('#discount');
+        const btn = document.querySelector('#calcular');
+        const pResult = document.querySelector('#result');
+
+        btn.addEventListener('click', calcularPrecioConDescuento);
+
+        
+        function calcularPrecioConDescuento() {
+            const price = Number(inputPrice.value);
+            const coupont = inputCupon.value;
+
+            if (!price || !coupont) {
+                pResult.innerText = "por favor llena el formulario";
+                return
+            } 
+            
+            //CON ARRAYS
+            const counponsList = [];
+            counponsList.push({
+                name: "Jairiana",
+                discount: 30,
+            });counponsList.push({
+                name: "Yoly",
+                discount: 50,
+            });counponsList.push({
+                name: "Noda",
+                discount: 80,
+            });
+            
+            let discount;
+
+            function isCuponInArrays(coupontElement) { // {name, discound}
+                return coupontElement.name == coupont;
+            }
+
+            const counpontInArrays = counponsList.find(isCuponInArrays)
+
+            const newPrice = (price * (100 - discount)) / 100;
+
+            if (counpontInArrays) {
+                discount = counpontInArrays.discount;
+            } else {
+                pResult.innerText = "El cupon no es valido";
+                return;
+            }
+
+            console.log({
+                coupont,
+                discount,
+                counpontInArrays,
+                counponsList,
+            })
+
+            pResult.innerText = 'El nuevo precio con descuento es $' + newPrice;
+        }
+    </script>
+</body>
+</html>
