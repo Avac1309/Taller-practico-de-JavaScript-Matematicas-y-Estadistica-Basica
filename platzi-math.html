@@ -13,20 +13,35 @@
         </p>
 
     <script>
+        //Calculando la mediana en una lista impar
+        function esPar(lista) {
+            // console.log(" Es par si sale 0")
+            return !(lista.length % 2 );
+        }
+        function esImpar(lista) {
+            return lista.length % 2;
+            // console.log(" Es impar si sale 1")
+        }
+
+        //Calcular mediana
+        function calcularMediana(lista){
+            const listaPar = esPar(lista);
+
+            if (listaPar) {
+                //..
+            } else {
+                const indexMedianaListaImpar = Math.floor(lista.length / 2);
+                console.log(indexMedianaListaImpar);
+                console.log(lista[indexMedianaListaImpar]);
+            }
+        }
+
+
         function calcularPromedio (lista) {
-            // letsumaLista = 0;
-            //     for (let i = 0; i < lista.length; i++) {
-            //         sumaLista = sumaLista + lista[i];
-            //     }
+            function sumarTolosLosElementos (valorAcumulado, nuevoValor){       return valorAcumulado + nuevoValor;
+            }
 
-            // function sumarTodosLosElemenyos (valorAcumulado, nuevoValor) {
-            //         return valorAcumulado + nuevoValor;
-            // }
-            //     const sumaLista = lista.reduce(sumarTodosLosElemenyos);
-
-            const sumarTolosLosElementos = (valorAcumulado, nuevoValor) => valorAcumulado + nuevoValor;
             const sumaLista = lista.reduce(sumarTolosLosElementos);
-
             const promedio = sumaLista / lista.length;
             console.log(promedio + " " + "este es el metodo Arrous funcion");
             return promedio;
