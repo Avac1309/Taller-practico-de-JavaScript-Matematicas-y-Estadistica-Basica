@@ -19,13 +19,16 @@
             //         sumaLista = sumaLista + lista[i];
             //     }
 
-            function sumarTodosLosElemenyos (valorAcumulado, nuevoValor) {
-                    return valorAcumulado + nuevoValor;
-            }
-                const sumaLista = lista.reduce(sumarTodosLosElemenyos);
+            // function sumarTodosLosElemenyos (valorAcumulado, nuevoValor) {
+            //         return valorAcumulado + nuevoValor;
+            // }
+            //     const sumaLista = lista.reduce(sumarTodosLosElemenyos);
+
+            const sumarTolosLosElementos = (valorAcumulado, nuevoValor) => valorAcumulado + nuevoValor;
+            const sumaLista = lista.reduce(sumarTolosLosElementos);
 
             const promedio = sumaLista / lista.length;
-            console.log(promedio);
+            console.log(promedio + " " + "este es el metodo Arrous funcion");
             return promedio;
         }
     </script>
