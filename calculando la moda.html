@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Taller de Matemáticas con JavaScript</title>
+</head>
+<body>
+    <h1>Calculando la moda</h1>
+        <p>
+            Por favor abre la consola del inspector del elemento 
+        </p>
+
+    <script>
+        //Calculando la mediana en una lista impar
+        function esPar(lista) {
+            return !(lista.length % 2 );
+        }
+        function esImpar(lista) {
+            return lista.length % 2; 
+        }
+
+        //Calculo de la moda
+        function calculoModa(lista) {
+            const listaCount = {};
+
+            for(let  i = 0; i < lista.length; i++) {
+                const elemento = lista[i];
+
+                if(listaCount[elemento]) {
+                    listaCount[elemento] += 1;
+                } else {
+                    listaCount[elemento] = 1;
+                }
+            }
+
+            console.log(listaCount)
+        }
+
+        //Calcular mediana
+        function calcularMediana(listaDesordenada){
+            const lista = ordenarLista (listaDesordenada);
+            const listaPar = esPar(lista);
+
+            if (listaPar) {
+                const indexMitad1ListaPar = (lista.length / 2) - 1;
+                const indexMitad2ListaPar = lista.length / 2;
+                const listaMitades = [];
+                listaMitades.push(lista[indexMitad1ListaPar]);
+                listaMitades.push(lista[indexMitad2ListaPar]);
+
+                const medianaListaPar = calcularPromedio(listaMitades);
+                return medianaListaPar;
+            } else {
+                const indexMedianaListaImpar = Math.floor(lista.length / 2);
+                const medianaListaImpar = lista[indexMedianaListaImpar];
+                console.log(indexMedianaListaImpar);
+                console.log(lista[medianaListaImpar]);
+                return medianaListaImpar;
+            }
+        }
+
+        function calcularPromedio (lista) {
+            function sumarTolosLosElementos (valorAcumulado, nuevoValor){       return valorAcumulado + nuevoValor;
+                }
+
+            const sumaLista = lista.reduce(sumarTolosLosElementos);
+            const promedio = sumaLista / lista.length;
+            return promedio;
+        }
+    
+        function ordenarLista(listaDesordenada) {
+            function ordenarListaSort(valorAcumulado, nuevoValor){
+
+                return valorAcumulado - nuevoValor;
+            }
+
+            const lista = listaDesordenada.sort((a,b) => a-b);
+
+            return lista;
+        }
+    </script>
+</body>
+</html>
