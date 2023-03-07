@@ -35,7 +35,17 @@
                 }
             }
 
-            console.log(listaCount)
+            const listaArray = Object.entries(listaCount); 
+            const listaOrdenada = ordenarListaBidimensional(listaArray);
+            const listaMaxNumber = listaOrdenada[listaOrdenada.length - 1];
+            console.log({listaCount, listaArray, listaOrdenada, listaMaxNumber});
+
+            console.log("La moda es: " + listaMaxNumber[0])
+
+            //o tambien podemos imprimir la moda de esta manera
+            //              se comentan los dos ultimos console.log
+            //      const moda = listaMaxNumber[0];
+            //      return moda;
         }
 
         //Calcular mediana
@@ -78,6 +88,17 @@
 
             const lista = listaDesordenada.sort((a,b) => a-b);
 
+            return lista;
+        }
+        
+
+        // arrays bidimensional [[a,1], [b,2], [b,3]]
+        function ordenarListaBidimensional(listaDesordenada) {
+            function ordenarListaSort(valorAcumulado, nuevoValor){
+                return valorAcumulado[1] - nuevoValor[1];
+            }
+
+            const lista = listaDesordenada.sort(ordenarListaSort);
             return lista;
         }
     </script>
